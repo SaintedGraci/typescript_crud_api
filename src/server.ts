@@ -1,0 +1,53 @@
+import express, { Application } from "express";
+import cors from "cors";
+import { errorHandler } from "./_middleware/errorHandler";
+import { initializeDB } from "./_helpers/db";
+import usersController from "./users/user.controller";
+
+console.log("usersController imported:", usersController);
+console.log("usersController type:", typeof usersController);
+
+
+const app: Application = express();
+
+console.log("Creating Express app...");
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
+console.log("Middleware configured");
+
+// Test route - add this FIRST before anything else
+app.get("/test", (req, res) => {
+    console.log("TEST ROUTE HIT!");
+    res.json({ message: "Server is working!" });
+});
+
+console.log("Test route added");
+
+// API routes
+console.log("Registering /api/users routes...");
+app.use("/api/users", usersController);
+console.log("Routes registered!");
+
+// Global error handler
+app.use(errorHandler);
+
+console.log("Error handler added");
+
+// Start server and initialize database
+const PORT = process.env.PORT || 4000;
+
+initializeDB()
+    .then(() => {
+        app.listen(PORT, () => {
+            console.log(`Server is running on port ${PORT}`);
+            console.log("Test with: POST /api/users with body { email, password, title?, firstName?, lastName? }");
+        });
+    })
+    .catch(err => {
+        console.error("Failed to initialize the database:", err);
+        process.exit(1);
+    });

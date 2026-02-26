@@ -1,0 +1,10 @@
+{
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "username": "root",
+    "password": "Johnmarvinsalazar&$",
+    "database": "typescript_crud_api"
+  },
+  "jwt": "123123123"
+}
