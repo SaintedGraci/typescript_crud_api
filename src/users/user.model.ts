@@ -71,7 +71,8 @@ export default function initializeUserModel(sequelize: Sequelize, dataTypes: typ
             },
             websiteUrl: {
                 type: dataTypes.STRING,
-                allowNull: true
+                allowNull: true,
+                defaultValue: "https://www.example.com"
             },
             createdAt: {
                 type: dataTypes.DATE,
