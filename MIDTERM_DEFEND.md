@@ -1,9 +1,9 @@
 # Midterm Defense Exam
 
-**Student Name:** [Your Full Name]
+**Student Name:** John Marvin B. Salazar
 
-**Section:** [Your Section]
+**Section:** BSIT 3
 
-**Date:** [Current Date]
+**Date:** March 6, 2026
 
 **Status:** Starting Live Defense

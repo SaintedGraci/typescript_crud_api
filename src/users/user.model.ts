@@ -1,3 +1,4 @@
+import { allow } from "joi";
 import { DataTypes, Model, Optional, Sequelize } from "sequelize";
 
 
@@ -11,6 +12,8 @@ export interface UserAttributes {
     role: string;
     createdAt: Date;
     updatedAt: Date;
+    websiteUrl  : string;
+
 }
 
 
@@ -28,6 +31,7 @@ implements UserAttributes {
     public firstName!: string;
     public lastName!: string;
     public role!: string;
+    public websiteUrl!: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
 }
@@ -64,6 +68,10 @@ export default function initializeUserModel(sequelize: Sequelize, dataTypes: typ
             role: {
                 type: dataTypes.STRING,
                 defaultValue: "user"
+            },
+            websiteUrl: {
+                type: dataTypes.STRING,
+                allowNull: true
             },
             createdAt: {
                 type: dataTypes.DATE,

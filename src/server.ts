@@ -4,9 +4,6 @@ import { errorHandler } from "./_middleware/errorHandler";
 import { initializeDB } from "./_helpers/db";
 import usersController from "./users/user.controller";
 
-console.log("usersController imported:", usersController);
-console.log("usersController type:", typeof usersController);
-
 
 const app: Application = express();
 
