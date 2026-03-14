@@ -10,9 +10,10 @@ export interface UserAttributes {
     firstName: string;
     lastName: string;
     role: string;
+    isverified: boolean;
     createdAt: Date;
     updatedAt: Date;
-    websiteUrl  : string;
+
 
 }
 
@@ -31,9 +32,9 @@ implements UserAttributes {
     public firstName!: string;
     public lastName!: string;
     public role!: string;
-    public websiteUrl!: string;
     public readonly createdAt!: Date;
     public readonly updatedAt!: Date;
+    public isverified!: boolean;
 }
 
 export default function initializeUserModel(sequelize: Sequelize, dataTypes: typeof DataTypes) {
@@ -69,11 +70,6 @@ export default function initializeUserModel(sequelize: Sequelize, dataTypes: typ
                 type: dataTypes.STRING,
                 defaultValue: "user"
             },
-            websiteUrl: {
-                type: dataTypes.STRING,
-                allowNull: true,
-                defaultValue: "https://www.example.com"
-            },
             createdAt: {
                 type: dataTypes.DATE,
                 defaultValue: dataTypes.NOW
@@ -81,6 +77,10 @@ export default function initializeUserModel(sequelize: Sequelize, dataTypes: typ
             updatedAt: {
                 type: dataTypes.DATE,
                 defaultValue: dataTypes.NOW
+            },
+            isverified: {
+                type: dataTypes.BOOLEAN,
+                defaultValue: false
             }
         },
         {
